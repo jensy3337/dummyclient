@@ -1,0 +1,268 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* DESIGN SYSTEM: Brutalist Minimalism with Typographic Hierarchy
+ * Typography: Space Mono (headers) + IBM Plex Sans (body)
+ * Color: Pure black, off-white, warm grey
+ * Aesthetic: Gallery-like, high-contrast, precision-based grid
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Brutalist Minimalism Color Palette */
+  --color-black: #000000;
+  --color-off-white: #FAFAF8;
+  --color-grey: #8B8680;
+  --color-grey-light: #D4D0CC;
+  --color-grey-dark: #4A4844;
+  --color-obsidian: #1a1a18;
+  --color-chalky: #E8E4DF;
+  --color-terracotta: #C85A3A;
+
+  --primary: #000000;
+  --primary-foreground: #FAFAF8;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #FAFAF8;
+  --chart-1: #8B8680;
+  --chart-2: #D4D0CC;
+  --chart-3: #4A4844;
+  --chart-4: #C85A3A;
+  --chart-5: #000000;
+  --radius: 0px;
+  
+  /* Brutalist: Pure black/white contrast */
+  --background: #FAFAF8;
+  --foreground: #000000;
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+  --popover: #FFFFFF;
+  --popover-foreground: #000000;
+  --secondary: #8B8680;
+  --secondary-foreground: #FFFFFF;
+  --muted: #D4D0CC;
+  --muted-foreground: #4A4844;
+  --accent: #000000;
+  --accent-foreground: #FAFAF8;
+  --destructive: #C85A3A;
+  --destructive-foreground: #FFFFFF;
+  --border: #000000;
+  --input: #FFFFFF;
+  --ring: #000000;
+  --sidebar: #FAFAF8;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #D4D0CC;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #000000;
+  --sidebar-ring: #000000;
+}
+
+.dark {
+  --primary: #FAFAF8;
+  --primary-foreground: #000000;
+  --sidebar-primary: #FAFAF8;
+  --sidebar-primary-foreground: #000000;
+  --background: #1a1a18;
+  --foreground: #FAFAF8;
+  --card: #2a2a28;
+  --card-foreground: #FAFAF8;
+  --popover: #2a2a28;
+  --popover-foreground: #FAFAF8;
+  --secondary: #8B8680;
+  --secondary-foreground: #FAFAF8;
+  --muted: #4A4844;
+  --muted-foreground: #D4D0CC;
+  --accent: #FAFAF8;
+  --accent-foreground: #000000;
+  --destructive: #C85A3A;
+  --destructive-foreground: #FFFFFF;
+  --border: #FAFAF8;
+  --input: #2a2a28;
+  --ring: #FAFAF8;
+  --chart-1: #8B8680;
+  --chart-2: #D4D0CC;
+  --chart-3: #4A4844;
+  --chart-4: #C85A3A;
+  --chart-5: #FAFAF8;
+  --sidebar: #1a1a18;
+  --sidebar-foreground: #FAFAF8;
+  --sidebar-accent: #4A4844;
+  --sidebar-accent-foreground: #FAFAF8;
+  --sidebar-border: #FAFAF8;
+  --sidebar-ring: #FAFAF8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .display-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   * Brutalist approach: generous margins, precision alignment
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Brutalist Border Utilities */
+  .border-brutalist {
+    border: 3px solid #000000;
+  }
+
+  .border-brutalist-thin {
+    border: 1px solid #000000;
+  }
+
+  /* Brutalist Grid for product layouts */
+  .grid-brutalist {
+    display: grid;
+    gap: 2rem;
+  }
+
+  /* Brutalist Typography Scale */
+  .text-display-xl {
+    font-family: 'Space Mono', monospace;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-lg {
+    font-family: 'Space Mono', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-md {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .text-body-lg {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .text-body-md {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .text-body-sm {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* Brutalist Hover States */
+  .hover-scale-subtle {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale-subtle:hover {
+    @apply scale-102;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+      max-width: 1400px;
+    }
+  }
+}
